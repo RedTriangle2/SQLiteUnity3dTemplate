@@ -15,6 +15,8 @@ public class SimpleDB : MonoBehaviour
     {
         //calls Method to create Database
         CreateDB();
+        // AddWeapon
+        Debug.Log(" SQL started Working!");
     }
 
     // Update is called once per frame
@@ -37,4 +39,6 @@ public class SimpleDB : MonoBehaviour
         connection.Close ();
       }
     }
+
+    //TODO: create method for adiing weapo into the database
 }
