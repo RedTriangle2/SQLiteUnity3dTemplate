@@ -7,6 +7,7 @@ using System.Data;
 
 public class SimpleDB : MonoBehaviour
 {
+    // Global Variabl Created Here
 
     private string dbName = "URI = file:Inventory.db";
 
@@ -15,6 +16,7 @@ public class SimpleDB : MonoBehaviour
     {
         //calls Method to create Database
         CreateDB();
+        AddWeapon();
         // AddWeapon
         Debug.Log(" SQL started Working!");
     }
@@ -33,7 +35,7 @@ public class SimpleDB : MonoBehaviour
         connection.Open ();
         using (var command = connection.CreateCommand())
         {
-            command.CommandText = "CREATE TABLE IF NOT EXISTS wepons(name VARCHAR (20), qte INT)";
+            command.CommandText = "CREATE TABLE IF NOT EXISTS weapons(name VARCHAR (20), qte INT)";
             command.ExecuteNonQuery();
         }
         connection.Close ();
@@ -41,4 +43,18 @@ public class SimpleDB : MonoBehaviour
     }
 
     //TODO: create method for adding weapon into the database
+    public void AddWeapon()
+    {
+      using(var connection = new SqliteConnection(dbName))
+      {
+        connection.Open ();
+        using (var command = connection.CreateCommand())
+        {
+            //SQL code goes here
+            command.CommandText = "INSERT INTO weapons (name, qte) VALUES ('Rifle', '17');";// Adds the SQL code as the argument to add a value of Rifle of 17 as the  values
+            command.ExecuteNonQuery();
+        }
+        connection.Close ();
+      }
+    }
 }
