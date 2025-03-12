@@ -40,5 +40,5 @@ public class SimpleDB : MonoBehaviour
       }
     }
 
-    //TODO: create method for adiing weapo into the database
+    //TODO: create method for adding weapon into the database
 }
